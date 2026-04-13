@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
-  description: "Webspires terms and conditions of service.",
+  description: "Webspires terms and conditions of service — covering payment terms, intellectual property, client responsibilities, and governing law.",
+  alternates: {
+    canonical: "https://www.webspires.com.pk/terms-and-conditions",
+  },
 };
 
 export default function TermsPage() {

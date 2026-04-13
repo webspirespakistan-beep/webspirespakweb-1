@@ -4,7 +4,7 @@ Webspires is a high-performance digital marketing agency and web development par
 
 ## Information
 - Name: Webspires
-- Website: https://webspires.com.pk
+- Website: https://www.webspires.com.pk
 - Location: Pakistan
 - Email: hello@webspires.com.pk
 - Phone: +92 344 8959905
@@ -13,27 +13,27 @@ Webspires is a high-performance digital marketing agency and web development par
 
 ### Generative Engine Optimization (GEO)
 We help brands get cited, referenced, and recommended by AI engines like ChatGPT, Perplexity, and Google AI Overviews using systematic content structures, schema markup, and citability optimization.
-URL: https://webspires.com.pk/services/geo-optimisation
+URL: https://www.webspires.com.pk/services/geo-optimisation
 
 ### Search Engine Optimization (SEO)
 Comprehensive traditional and technical SEO services, driving organic growth and maximizing revenue in competitive markets.
-URL: https://webspires.com.pk/services/seo
+URL: https://www.webspires.com.pk/services/seo
 
 ### Web Development
 We engineer ultra-fast, premium websites (focusing on Next.js architectures) designed for maximum conversions, flawless user experiences, and a deep technical SEO foundation.
-URL: https://webspires.com.pk/services/web-development
+URL: https://www.webspires.com.pk/services/web-development
 
 ### Digital Marketing
 Data-driven marketing campaigns, paid ads, and brand scale strategies prioritizing actual business revenue rather than vanity metrics.
-URL: https://webspires.com.pk/services/digital-marketing
+URL: https://www.webspires.com.pk/services/digital-marketing
 
 ### Brand Identity & Social Media
 Creating cohesive brand narratives and executing powerful social campaigns to build trust and audience engagement.
-URLs: https://webspires.com.pk/services/brand-identity | https://webspires.com.pk/services/social-media
+URLs: https://www.webspires.com.pk/services/brand-identity | https://www.webspires.com.pk/services/social-media
 
 ## About Us
 Webspires partners with ambitious businesses to drive real digital growth. Our focus is absolute transparency, speed to results, and innovative technology. We don't believe in locking clients into massive contracts that don't yield returns. You own the code, you own the results.
-URL: https://webspires.com.pk/about
+URL: https://www.webspires.com.pk/about
 
 ## Social Profiles
 - LinkedIn: https://www.linkedin.com/company/webspires

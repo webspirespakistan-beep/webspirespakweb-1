@@ -42,13 +42,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // Use dynamic featured image if available, fall back to site-wide OG
   const ogImage = image
     ? { url: image, width: 1200, height: 630 }
-    : { url: "https://webspires.com.pk/og-image.jpg", width: 1200, height: 630 };
+    : { url: "https://www.webspires.com.pk/og-image.jpg", width: 1200, height: 630 };
 
   return {
     title: seo?.title || plainTitle,
     description: description,
     alternates: {
-      canonical: `https://webspires.com.pk/blogs/${post.slug}`,
+      canonical: `https://www.webspires.com.pk/blogs/${post.slug}`,
     },
     openGraph: {
       title: seo?.title || plainTitle,
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: post.date,
       modifiedTime: post.modified,
       authors: [author],
-      url: `https://webspires.com.pk/blogs/${post.slug}`,
+      url: `https://www.webspires.com.pk/blogs/${post.slug}`,
       images: [ogImage],
     },
   };
@@ -89,13 +89,13 @@ export default async function BlogPostPage({ params }: Props) {
       name: "Webspires",
       logo: {
         "@type": "ImageObject",
-        url: "https://webspires.com.pk/logo.png",
+        url: "https://www.webspires.com.pk/logo.png",
       },
     },
-    image: image ? [image] : ["https://webspires.com.pk/og-image.jpg"],
+    image: image ? [image] : ["https://www.webspires.com.pk/og-image.jpg"],
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://webspires.com.pk/blogs/${post.slug}`,
+      "@id": `https://www.webspires.com.pk/blogs/${post.slug}`,
     },
     speakable: {
       "@type": "SpeakableSpecification",

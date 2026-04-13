@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Learn about Webspires — who we are, what we stand for, and why businesses choose us as their digital partner.",
   alternates: {
-    canonical: "https://webspires.com.pk/about",
+    canonical: "https://www.webspires.com.pk/about",
   },
 };
 
@@ -17,13 +17,13 @@ const aboutSchema = {
   "@type": "AboutPage",
   name: "About Webspires",
   description: "Learn about Webspires — who we are, what we stand for, and why businesses choose us as their digital partner.",
-  url: "https://webspires.com.pk/about",
+  url: "https://www.webspires.com.pk/about",
   publisher: {
     "@type": "Organization",
     name: "Webspires",
     logo: {
       "@type": "ImageObject",
-      url: "https://webspires.com.pk/logo.png"
+      url: "https://www.webspires.com.pk/logo.png"
     }
   }
 };

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     "We build high-performance websites and data-driven digital marketing strategies for businesses that want to grow.",
   alternates: {
-    canonical: "https://webspires.com.pk",
+    canonical: "https://www.webspires.com.pk",
   },
 };
 
@@ -19,8 +19,8 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Webspires",
-  url: "https://webspires.com.pk",
-  logo: "https://webspires.com.pk/logo.png",
+  url: "https://www.webspires.com.pk",
+  logo: "https://www.webspires.com.pk/logo.png",
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "+92-344-8959905",
@@ -38,7 +38,12 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Webspires Website",
-  url: "https://webspires.com.pk",
+  url: "https://www.webspires.com.pk",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://www.webspires.com.pk/blogs?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
 };
 
 export default function HomePage() {

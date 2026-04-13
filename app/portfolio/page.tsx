@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Projects delivered by Webspires — websites, digital marketing campaigns, and brand identities.",
   alternates: {
-    canonical: "https://webspires.com.pk/portfolio",
+    canonical: "https://www.webspires.com.pk/portfolio",
   },
 };
 
@@ -16,7 +16,7 @@ const portfolioSchema = {
   "@type": "CollectionPage",
   name: "Webspires Portfolio",
   description: "Projects delivered by Webspires — websites, digital marketing campaigns, and brand identities.",
-  url: "https://webspires.com.pk/portfolio",
+  url: "https://www.webspires.com.pk/portfolio",
 };
 
 import { getAllProjects, getPostCategories, stripHtml, getFeaturedImage } from "@/lib/wordpress";

@@ -2,8 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Team",
-  description: "Meet the people behind Webspires.",
+  title: "Our Team | Meet the Experts Behind Webspires",
+  description: "Meet the team behind Webspires — senior developers, data-driven marketers, and brand specialists who build digital growth strategies that deliver real results.",
+  alternates: {
+    canonical: "https://www.webspires.com.pk/team",
+  },
+  openGraph: {
+    title: "Our Team | Webspires",
+    description: "Meet the team behind Webspires — senior developers, data-driven marketers, and brand specialists.",
+    url: "https://www.webspires.com.pk/team",
+    type: "website",
+  },
 };
 
 // Replace with actual team data or fetch from WP CPT

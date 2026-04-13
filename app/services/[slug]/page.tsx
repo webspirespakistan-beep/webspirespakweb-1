@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: service.title,
     description: service.shortDescription,
     alternates: {
-      canonical: `https://webspires.com.pk/services/${service.slug}`,
+      canonical: `https://www.webspires.com.pk/services/${service.slug}`,
     },
   };
 }
@@ -43,7 +43,7 @@ export default async function SingleServicePage({ params }: { params: Promise<{ 
     "provider": {
       "@type": "Organization",
       "name": "Webspires",
-      "url": "https://webspires.com.pk"
+      "url": "https://www.webspires.com.pk"
     },
     "areaServed": [{
       "@type": "Country",
@@ -55,7 +55,7 @@ export default async function SingleServicePage({ params }: { params: Promise<{ 
       "@type": "Country",
       "name": "United States"
     }],
-    "url": `https://webspires.com.pk/services/${service.slug}`
+    "url": `https://www.webspires.com.pk/services/${service.slug}`
   };
 
   const schemaArray = [

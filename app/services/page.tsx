@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Web development, digital marketing, GEO optimisation, SEO, branding, and social media services from Webspires.",
   alternates: {
-    canonical: "https://webspires.com.pk/services",
+    canonical: "https://www.webspires.com.pk/services",
   },
 };
 
@@ -23,7 +23,7 @@ export default function ServicesPage() {
         "@type": "Service",
         "name": service.title,
         "description": service.shortDescription,
-        "url": `https://webspires.com.pk/services/${service.slug}`
+        "url": `https://www.webspires.com.pk/services/${service.slug}`
       }
     }))
   };

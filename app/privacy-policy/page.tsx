@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Webspires privacy policy — how we collect, use, and protect your data.",
+  description: "Webspires privacy policy — how we collect, use, and protect your data. Learn about your rights under GDPR and UK data protection law.",
+  alternates: {
+    canonical: "https://www.webspires.com.pk/privacy-policy",
+  },
 };
 
 export default function PrivacyPolicyPage() {

@@ -5,9 +5,18 @@ import { getAllPosts, formatDate, getFeaturedImage, stripHtml } from "@/lib/word
 import { WPPost } from "@/types/wordpress";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Blog | Insights on GEO, Digital Marketing & Web Development",
   description:
     "Insights on GEO, digital marketing, web development, and AI search from the Webspires team.",
+  alternates: {
+    canonical: "https://www.webspires.com.pk/blogs",
+  },
+  openGraph: {
+    title: "Blog | Webspires",
+    description: "Insights on GEO, digital marketing, web development, and AI search from the Webspires team.",
+    url: "https://www.webspires.com.pk/blogs",
+    type: "website",
+  },
 };
 
 export const revalidate = 3600;

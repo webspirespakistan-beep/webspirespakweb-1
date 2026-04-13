@@ -28,11 +28,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: seo?.title || project.title.rendered,
-    description: seo?.description,
+    description: seo?.description || `Explore the ${project.title.rendered} project — delivered by Webspires.`,
+    alternates: {
+      canonical: `https://www.webspires.com.pk/projects/${project.slug}`,
+    },
     openGraph: {
       title: seo?.title || project.title.rendered,
-      description: seo?.description,
+      description: seo?.description || `Explore the ${project.title.rendered} project — delivered by Webspires.`,
       images: image ? [{ url: image }] : [],
+      url: `https://www.webspires.com.pk/projects/${project.slug}`,
+      type: "article",
     },
   };
 }

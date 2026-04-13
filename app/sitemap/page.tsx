@@ -3,8 +3,11 @@ import { getAllPosts } from "@/lib/wordpress";
 import { WPPost } from "@/types/wordpress";
 
 export const metadata = {
-  title: "Sitemap",
-  description: "Navigate through Webspires website using our HTML sitemap.",
+  title: "Sitemap | Navigate Webspires",
+  description: "Navigate through Webspires website using our HTML sitemap. Find all pages, services, and blog posts.",
+  alternates: {
+    canonical: "https://www.webspires.com.pk/sitemap",
+  },
 };
 
 export default async function SitemapPage() {

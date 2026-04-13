@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Get in touch with Webspires. Reach out via email or WhatsApp and we'll get back to you within 24 hours.",
   alternates: {
-    canonical: "https://webspires.com.pk/contact-us",
+    canonical: "https://www.webspires.com.pk/contact-us",
   },
 };
 
@@ -14,7 +14,7 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "Webspires",
-  image: "https://webspires.com.pk/logo.png",
+  image: "https://www.webspires.com.pk/logo.png",
   email: "hello@webspires.com.pk",
   telephone: "+923448959905",
   address: {
@@ -37,7 +37,7 @@ const localBusinessSchema = {
       closes: "18:00"
     }
   ],
-  url: "https://webspires.com.pk/contact-us"
+  url: "https://www.webspires.com.pk/contact-us"
 };
 
 export default function ContactPage() {

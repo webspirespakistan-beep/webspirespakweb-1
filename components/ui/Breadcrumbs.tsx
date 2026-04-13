@@ -14,13 +14,13 @@ export default function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://webspires.com.pk"
+        "item": "https://www.webspires.com.pk"
       },
       ...items.map((item, index) => ({
         "@type": "ListItem",
         "position": index + 2,
         "name": item.label.replace(/<[^>]+>/g, ""),
-        "item": `https://webspires.com.pk${item.href}`
+        "item": `https://www.webspires.com.pk${item.href}`
       }))
     ]
   };
