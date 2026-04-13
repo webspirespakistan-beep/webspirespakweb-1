@@ -63,7 +63,7 @@ export default function PortfolioGrid({ projects }: { projects: Project[] }) {
               ) : (
                 <>
                   <div className="absolute inset-0 bg-gradient-to-br from-brand-red/10 to-transparent" />
-                  <span className="font-heading font-bold text-white/10 text-5xl" dangerouslySetInnerHTML={{ __html: project.title.rendered[0] }} />
+                  <span className="font-heading font-bold text-white/10 text-5xl" dangerouslySetInnerHTML={{ __html: project.title?.rendered?.[0] || "" }} />
                 </>
               )}
               {project.categoriesList.length > 0 && (

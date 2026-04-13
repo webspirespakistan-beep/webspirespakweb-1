@@ -8,12 +8,13 @@ export const metadata: Metadata = {
 };
 
 import { getAllProjects, getPostCategories, stripHtml, getFeaturedImage } from "@/lib/wordpress";
+import { WPPost } from "@/types/wordpress";
 import PortfolioGrid from "@/components/portfolio/PortfolioGrid";
 
 export const revalidate = 3600;
 
 export default async function PortfolioPage() {
-  let wpProjects = [];
+  let wpProjects: WPPost[] = [];
   try {
     wpProjects = await getAllProjects();
   } catch (error) {
