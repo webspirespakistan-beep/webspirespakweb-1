@@ -1,22 +1,34 @@
 import Link from "next/link";
-import Image from "next/image";
 
+/* ──────────────────────────────────────────────────────────
+   HERO — CWV OPTIMISATIONS:
+   
+   LCP: Removed YouTube iframe entirely. YouTube embeds load ~800KB-1MB
+   of JS (player API, ads SDK, analytics) and block the main thread
+   for 2-4 seconds on slow 4G. Replaced with a CSS-only animated
+   gradient background that renders instantly.
+   
+   CLS: All hero elements have explicit dimensions/constraints.
+   The animate-fade-up uses opacity+transform only (compositor-only
+   properties), avoiding layout recalculation.
+   
+   INP: Zero JS in this component — pure server component.
+   ────────────────────────────────────────────────────────── */
 export default function Hero() {
   return (
     <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-brand-dark">
-      {/* Video Background */}
+      {/* Lightweight CSS-only animated background — replaces YouTube iframe */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-        <iframe
-          className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-          src="https://www.youtube.com/embed/xvh-13yv1oU?autoplay=1&mute=1&loop=1&playlist=xvh-13yv1oU&controls=0&disablekb=1&playsinline=1&rel=0"
-          title="Background Video"
-          allow="autoplay; muted"
-          frameBorder="0"
-        ></iframe>
-        {/* Overlays to ensure text readability */}
-        <div className="absolute inset-0 bg-brand-dark/70" />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-brand-dark/80" />
+        {/* Animated gradient blobs — GPU-composited, zero main thread cost */}
+        <div className="absolute -top-1/4 -left-1/4 w-[80vw] h-[80vw] bg-brand-red/[0.07] rounded-full blur-[120px] animate-blob" />
+        <div className="absolute -bottom-1/4 -right-1/4 w-[60vw] h-[60vw] bg-brand-red/[0.05] rounded-full blur-[100px] animate-blob" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] bg-white/[0.02] rounded-full blur-[80px] animate-blob" style={{ animationDelay: "4s" }} />
+        
+        {/* Grid overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+        
+        {/* Gradient overlays for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-brand-dark/60" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full flex flex-col items-center pt-32 pb-20">
@@ -32,7 +44,7 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* H1 Heading with Premium Gradient & Spacing */}
+        {/* H1 Heading — this IS the LCP element on homepage */}
         <h1
           className="font-heading font-extrabold text-5xl sm:text-6xl lg:text-[5.5rem] tracking-tight text-center text-white leading-[1.1] mb-8 animate-fade-up max-w-5xl"
           style={{ animationDelay: "0.1s" }}

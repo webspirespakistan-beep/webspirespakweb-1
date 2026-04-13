@@ -42,9 +42,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0">
-          <div className="w-36 h-10 relative flex items-center justify-start">
-            <Image src="/logo.png" alt="Webspires Logo" fill className="object-contain object-left" />
-          </div>
+          <Image
+            src="/logo.png"
+            alt="Webspires Logo"
+            width={144}
+            height={40}
+            priority
+            className="object-contain"
+          />
         </Link>
 
         {/* Desktop Nav */}

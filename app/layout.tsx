@@ -1,9 +1,33 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import WhatsAppWidget from "@/components/ui/WhatsAppWidget";
+
+/* ──────────────────────────────────────────────────────────
+   FONT OPTIMISATION (CWV: LCP + CLS)
+   - next/font self-hosts fonts at build time → zero external requests
+   - display: "swap" prevents invisible text (FOIT → FOUT eliminated)
+   - Subset reduces download size by ~70%
+   - CSS variable injection = zero layout shift from font swap
+   ────────────────────────────────────────────────────────── */
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-body",
+  preload: true,
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-heading",
+  preload: true,
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
 
 export const metadata: Metadata = {
   title: {
@@ -36,9 +60,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`scroll-smooth ${inter.variable} ${poppins.variable}`}>
       <head>
-        <script
+        {/* DNS prefetch for external origins used for images */}
+        <link rel="dns-prefetch" href="https://wordpress-1196470-4364598.cloudwaysapps.com" />
+        <link rel="preconnect" href="https://wordpress-1196470-4364598.cloudwaysapps.com" crossOrigin="anonymous" />
+      </head>
+      <body className="bg-brand-dark text-white font-body antialiased">
+        {/* GTM: moved to afterInteractive to unblock main thread during LCP */}
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -47,8 +79,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-54LN7DTC');`,
           }}
         />
-      </head>
-      <body className="bg-brand-dark text-white font-body antialiased">
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-54LN7DTC"

@@ -29,9 +29,14 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center mb-6">
-              <div className="w-40 h-12 relative flex items-center justify-start">
-                <Image src="/logo.png" alt="Webspires Logo" fill className="object-contain object-left" />
-              </div>
+              <Image
+                src="/logo.png"
+                alt="Webspires Logo"
+                width={160}
+                height={48}
+                loading="lazy"
+                className="object-contain"
+              />
             </Link>
             <p className="text-brand-gray text-sm leading-relaxed max-w-xs">
               Your reliable digital partner. We build high-performance websites

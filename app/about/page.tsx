@@ -67,9 +67,9 @@ export default function AboutPage() {
             <div className="aspect-square rounded-[2rem] bg-brand-dark-2 border border-white/5 overflow-hidden relative shadow-2xl group">
               <Image 
                 src="https://wordpress-1196470-4364598.cloudwaysapps.com/wp-content/uploads/2025/02/graphic-design-min-scaled-1.webp" 
-                alt="Webspires Graphic Design" 
+                alt="Webspires Graphic Design — premium creative design services for brands" 
                 fill 
-                unoptimized
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-105" 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent opacity-80" />

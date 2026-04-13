@@ -19,10 +19,10 @@ export default function ClientLogos() {
         </p>
       </div>
 
-      {/* Scrolling track */}
+      {/* Scrolling track — 2x duplication sufficient for seamless loop */}
       <div className="relative flex overflow-hidden group">
         <div className="flex items-center gap-24 animate-scroll-left whitespace-nowrap px-12">
-          {[...logos, ...logos, ...logos].map((logo, i) => (
+          {[...logos, ...logos].map((logo, i) => (
             <div
               key={i}
               className="flex items-center justify-center w-48 h-24 bg-white rounded-xl p-2 shadow-sm opacity-80 hover:opacity-100 transition-all duration-300 shrink-0"
@@ -34,6 +34,7 @@ export default function ClientLogos() {
                   fill 
                   className="object-contain"
                   sizes="160px"
+                  loading="lazy"
                 />
               </div>
             </div>
