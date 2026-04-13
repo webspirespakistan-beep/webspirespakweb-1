@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -37,6 +38,9 @@ export default function ContactPage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 w-full">
         {/* Header Section */}
         <div className="text-center mb-20 max-w-2xl mx-auto flex flex-col items-center">
+          <div className="w-full justify-center flex mb-8">
+            <Breadcrumbs items={[{ label: "Contact Us", href: "/contact-us" }]} />
+          </div>
           <p className="inline-block bg-brand-red/10 text-brand-red font-heading font-bold text-xs uppercase tracking-[0.2em] px-4 py-1.5 rounded-full mb-6 border border-brand-red/20 shadow-[0_0_20px_rgba(232,25,44,0.1)]">
             Contact
           </p>

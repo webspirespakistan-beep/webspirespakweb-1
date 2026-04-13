@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "About",
@@ -38,6 +39,7 @@ export default function AboutPage() {
         {/* Header */}
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
           <div>
+            <Breadcrumbs items={[{ label: "About Us", href: "/about" }]} />
             <p className="text-brand-red font-heading font-semibold text-sm uppercase tracking-widest mb-3">
               About Us
             </p>

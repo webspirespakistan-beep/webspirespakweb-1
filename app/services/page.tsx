@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import { servicesData } from "@/lib/data/services";
 
 export const metadata: Metadata = {
@@ -36,6 +37,7 @@ export default function ServicesPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="max-w-2xl mb-20">
+          <Breadcrumbs items={[{ label: "Services", href: "/services" }]} />
           <p className="text-brand-red font-heading font-semibold text-sm uppercase tracking-widest mb-3">
             Services
           </p>

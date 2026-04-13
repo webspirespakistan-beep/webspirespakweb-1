@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -48,6 +49,7 @@ export default async function PortfolioPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="max-w-2xl mb-16">
+          <Breadcrumbs items={[{ label: "Portfolio", href: "/portfolio" }]} />
           <p className="text-brand-red font-heading font-semibold text-sm uppercase tracking-widest mb-3">
             Portfolio
           </p>

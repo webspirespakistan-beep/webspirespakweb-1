@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import { notFound } from "next/navigation";
 import { servicesData } from "@/lib/data/services";
 
@@ -81,13 +82,10 @@ export default async function SingleServicePage({ params }: { params: Promise<{ 
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         
-        {/* Back Link */}
-        <Link href="/services" className="inline-flex items-center gap-2 text-brand-gray hover:text-white transition-colors mb-12 group">
-          <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-          </svg>
-          Back to Services
-        </Link>
+        <Breadcrumbs items={[
+          { label: "Services", href: "/services" },
+          { label: service.title, href: `/services/${service.slug}` }
+        ]} />
         
         {/* Header Section */}
         <div className="mb-16">
