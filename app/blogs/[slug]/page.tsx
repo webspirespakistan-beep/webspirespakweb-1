@@ -30,8 +30,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const plainTitle = post.title.rendered.replace(/<[^>]+>/g, "");
 
   let description = seo?.description || `Read our latest article on ${plainTitle}`;
-  if (plainTitle.includes('ChatGPT-5') || plainTitle.includes('GPT-OSS')) {
-    description = "Discover the latest AI advancements — key features, real-world use cases, pricing, and how businesses are leveraging OpenAI's most powerful models.";
+  if (plainTitle.includes('ChatGPT-5')) {
+    description = "Discover what ChatGPT-5 can do — key features, real-world use cases, pricing, and how businesses are using OpenAI's most powerful AI model in 2025.";
+  } else if (plainTitle.includes('GPT-OSS')) {
+    description = "Explore the rise of GPT-OSS open-source models — why free AI alternatives are disrupting the market and how to deploy them for your own business today.";
   }
 
   return {
