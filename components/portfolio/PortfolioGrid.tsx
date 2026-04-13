@@ -48,52 +48,79 @@ export default function PortfolioGrid({ projects }: { projects: Project[] }) {
           <Link
             href={`/projects/${project.slug}`}
             key={project.id}
-            className="group bg-brand-dark-2 border border-white/5 hover:border-white/10 rounded-2xl overflow-hidden transition-all duration-300 block"
+            className="group relative bg-brand-dark-2 rounded-3xl overflow-hidden block transform transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(255,0,0,0.2)] focus:outline-none border border-white/5 hover:border-brand-red/30"
           >
-            {/* Image placeholder or real image */}
-            <div className="relative h-56 bg-brand-dark-3 flex items-center justify-center overflow-hidden">
+            {/* Ambient Background Hover Glow */}
+            <div className="absolute inset-0 bg-gradient-to-br from-brand-red/0 via-transparent to-brand-red/0 group-hover:from-brand-red/10 group-hover:to-brand-dark transition-all duration-700 z-0"/>
+            
+            {/* Image Section */}
+            <div className="relative h-64 sm:h-72 bg-brand-dark-3 flex items-center justify-center overflow-hidden z-10 w-full mb-0">
               {project.featuredImageUrl ? (
                 <Image
                   src={project.featuredImageUrl}
                   alt={project.title.rendered}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               ) : (
                 <>
-                  <div className="absolute inset-0 bg-gradient-to-br from-brand-red/10 to-transparent" />
-                  <span className="font-heading font-bold text-white/10 text-5xl" dangerouslySetInnerHTML={{ __html: project.title?.rendered?.[0] || "" }} />
+                  <div className="absolute inset-0 bg-gradient-to-br from-brand-red/10 to-brand-dark-3" />
+                  <span className="font-heading font-bold text-white/10 text-6xl" dangerouslySetInnerHTML={{ __html: project.title?.rendered?.[0] || "" }} />
                 </>
               )}
+              
+              {/* Overlay Gradient for seamless text transition */}
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark-2 via-brand-dark-2/40 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-500" />
+              
+              {/* Category Badge - Glassmorphism */}
               {project.categoriesList.length > 0 && (
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="bg-brand-red/90 text-white text-xs font-heading font-semibold px-3 py-1 rounded-full shadow-lg">
+                <div className="absolute top-5 right-5 z-20">
+                  <span className="bg-brand-dark/60 backdrop-blur-md text-white text-[11px] uppercase font-heading font-bold tracking-widest px-4 py-2 rounded-full border border-white/10 group-hover:border-brand-red/50 group-hover:text-brand-red transition-colors duration-300 shadow-xl">
                     {project.categoriesList[0]}
                   </span>
                 </div>
               )}
             </div>
 
-            {/* Content */}
-            <div className="p-6">
+            {/* Content Section */}
+            <div className="relative z-10 p-8 transform transition-transform duration-500">
               <h3 
-                className="font-heading font-bold text-white text-xl mb-2 group-hover:text-brand-red transition-colors duration-200"
+                className="font-heading font-extrabold text-white text-2xl mb-3 group-hover:text-brand-red transition-colors duration-300 line-clamp-2"
                 dangerouslySetInnerHTML={{ __html: project.title.rendered }}
               />
                 
-              <p className="text-brand-gray text-sm leading-relaxed mb-4">
+              <p className="text-brand-gray/80 text-sm leading-relaxed mb-6 line-clamp-3 group-hover:text-white/80 transition-colors duration-300">
                 {project.excerptText}
               </p>
-              <div className="flex flex-wrap gap-2">
-                {project.categoriesList.map((tag) => (
+              
+              <div className="flex flex-wrap gap-2 mb-8">
+                {project.categoriesList.slice(0, 3).map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs font-heading font-medium text-brand-gray-light bg-brand-dark-3 px-3 py-1 rounded"
+                    className="text-xs font-medium text-brand-gray-light bg-black/20 px-3 py-1.5 rounded-md border border-white/5"
                   >
                     {tag}
                   </span>
                 ))}
+                {project.categoriesList.length > 3 && (
+                  <span className="text-xs font-medium text-brand-gray-light bg-black/20 px-3 py-1.5 rounded-md border border-white/5">
+                    +{project.categoriesList.length - 3}
+                  </span>
+                )}
+              </div>
+
+              {/* Action Link */}
+              <div className="flex items-center text-brand-red text-sm font-bold font-heading uppercase tracking-wider">
+                <span>View Project</span>
+                <svg 
+                  className="w-5 h-5 ml-2 transform group-hover:translate-x-3 transition-transform duration-300" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
               </div>
             </div>
           </Link>
