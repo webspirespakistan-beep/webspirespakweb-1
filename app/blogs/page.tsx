@@ -65,6 +65,7 @@ export default async function BlogsPage() {
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                         sizes="(max-width: 768px) 100vw, 33vw"
+                        loading="lazy"
                       />
                     ) : (
                       <div className="absolute inset-0 bg-gradient-to-br from-brand-red/10 to-transparent" />

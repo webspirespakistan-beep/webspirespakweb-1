@@ -34,6 +34,7 @@ export default async function RelatedPosts({ currentSlug }: { currentSlug: strin
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 640px) 100vw, 33vw"
+                    loading="lazy"
                   />
                 </div>
               )}

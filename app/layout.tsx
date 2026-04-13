@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import dynamic from "next/dynamic";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
-import WhatsAppWidget from "@/components/ui/WhatsAppWidget";
+
+/* Lazy-load WhatsApp widget — not needed for initial paint or LCP */
+const WhatsAppWidget = dynamic(() => import("@/components/ui/WhatsAppWidget"), {
+  ssr: false,
+  loading: () => null,
+});
 
 /* ──────────────────────────────────────────────────────────
    FONT OPTIMISATION (CWV: LCP + CLS)

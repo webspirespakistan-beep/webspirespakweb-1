@@ -48,7 +48,7 @@ export default function PortfolioGrid({ projects }: { projects: Project[] }) {
           <Link
             href={`/projects/${project.slug}`}
             key={project.id}
-            className="group relative bg-brand-dark-2 rounded-3xl overflow-hidden block transform transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(255,0,0,0.2)] focus:outline-none border border-white/5 hover:border-brand-red/30"
+            className="group relative bg-brand-dark-2 rounded-3xl overflow-hidden block transform transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(255,0,0,0.2)] focus:outline-none border border-white/5 hover:border-brand-red/30" style={{ willChange: 'transform' }}
           >
             {/* Ambient Background Hover Glow */}
             <div className="absolute inset-0 bg-gradient-to-br from-brand-red/0 via-transparent to-brand-red/0 group-hover:from-brand-red/10 group-hover:to-brand-dark transition-all duration-700 z-0"/>
@@ -58,10 +58,11 @@ export default function PortfolioGrid({ projects }: { projects: Project[] }) {
               {project.featuredImageUrl ? (
                 <Image
                   src={project.featuredImageUrl}
-                  alt={project.title.rendered}
+                  alt={project.title.rendered.replace(/<[^>]+>/g, '')}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="lazy"
                 />
               ) : (
                 <>
