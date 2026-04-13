@@ -59,10 +59,11 @@ export default async function ProjectPage({ params }: Props) {
         {image ? (
           <Image
             src={image}
-            alt={project.title.rendered}
+            alt={project.title.rendered.replace(/<[^>]+>/g, '')}
             fill
             className="object-cover opacity-60 mix-blend-screen"
             priority
+            fetchPriority="high"
             sizes="100vw"
           />
         ) : (

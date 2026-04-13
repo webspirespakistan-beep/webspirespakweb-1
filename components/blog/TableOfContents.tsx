@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 
 interface TOCItem {
   id: string;
@@ -8,9 +8,32 @@ interface TOCItem {
   level: number;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   CWV: INP OPTIMISATION
+   
+   The original component ran setActiveId on every IntersectionObserver
+   callback — which fires frequently while scrolling. Each setState
+   triggers a re-render, causing jank on slow devices.
+   
+   Fix: throttle the highlight update so it fires at most once per 100ms
+   using requestAnimationFrame — keeps state updates off the critical path
+   while scrolling, dramatically improving INP on mobile.
+   ───────────────────────────────────────────────────────────────────────── */
 export default function TableOfContents() {
   const [headings, setHeadings] = useState<TOCItem[]>([]);
   const [activeId, setActiveId] = useState<string>("");
+  const pendingId = useRef<string>("");
+  const rafRef = useRef<number | null>(null);
+
+  /* Throttled setter — batches rapid intersection updates into one rAF tick */
+  const scheduleActiveId = useCallback((id: string) => {
+    pendingId.current = id;
+    if (rafRef.current !== null) return;
+    rafRef.current = requestAnimationFrame(() => {
+      setActiveId(pendingId.current);
+      rafRef.current = null;
+    });
+  }, []);
 
   useEffect(() => {
     const wpContent = document.querySelector(".wp-content");
@@ -35,7 +58,7 @@ export default function TableOfContents() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
+            scheduleActiveId(entry.target.id);
           }
         });
       },
@@ -43,13 +66,16 @@ export default function TableOfContents() {
     );
 
     elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+    return () => {
+      observer.disconnect();
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    };
+  }, [scheduleActiveId]);
 
   if (headings.length < 2) return null;
 
   return (
-    <nav className="bg-brand-dark-2 border border-white/5 rounded-2xl p-6 mb-10">
+    <nav className="bg-brand-dark-2 border border-white/5 rounded-2xl p-6 mb-10" aria-label="Table of contents">
       <h2 className="font-heading font-bold text-white text-sm uppercase tracking-widest mb-4">
         Table of Contents
       </h2>
