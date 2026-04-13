@@ -34,8 +34,35 @@ export default async function SingleServicePage({ params }: { params: Promise<{ 
     notFound();
   }
 
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": service.title,
+    "description": service.shortDescription,
+    "provider": {
+      "@type": "Organization",
+      "name": "Webspires",
+      "url": "https://webspires.com.pk"
+    },
+    "areaServed": [{
+      "@type": "Country",
+      "name": "Pakistan"
+    }, {
+      "@type": "Country",
+      "name": "United Kingdom"
+    }, {
+      "@type": "Country",
+      "name": "United States"
+    }],
+    "url": `https://webspires.com.pk/services/${service.slug}`
+  };
+
   return (
     <div className="min-h-screen bg-brand-dark pt-32 pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         
         {/* Back Link */}

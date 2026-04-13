@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       modifiedTime: post.modified,
       authors: [author],
       url: `https://webspires.com.pk/blogs/${post.slug}`,
-      images: image ? [{ url: image }] : [{ url: "https://webspires.com.pk/og-image.jpg", width: 1200, height: 630 }],
+      images: [{ url: "https://webspires.com.pk/og-image.jpg", width: 1200, height: 630 }],
     },
   };
 }
@@ -140,7 +140,7 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Content */}
         <div
           className="wp-content"
-          dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+          dangerouslySetInnerHTML={{ __html: post.content.rendered.replace(/https:\/\/wordpress-1196470-4364598\.cloudwaysapps\.com\/([a-zA-Z0-9_-]+)\/?/g, "https://webspires.com.pk/blogs/$1") }}
         />
 
         {/* Back link */}

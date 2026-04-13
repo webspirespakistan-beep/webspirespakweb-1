@@ -12,8 +12,27 @@ export const metadata: Metadata = {
 };
 
 export default function ServicesPage() {
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": servicesData.map((service, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "Service",
+        "name": service.title,
+        "description": service.shortDescription,
+        "url": `https://webspires.com.pk/services/${service.slug}`
+      }
+    }))
+  };
+
   return (
     <div className="min-h-screen bg-brand-dark pt-32 pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="max-w-2xl mb-20">
