@@ -3,8 +3,8 @@ import Image from "next/image";
 const logos = [
   { name: "Zeb Tailors Fabrics", src: "https://wordpress-1196470-4364598.cloudwaysapps.com/wp-content/uploads/2026/01/ZEB-TAILORS-FABRICS-logo-scaled.png" },
   { name: "Smile International Aesthetic Clinic", src: "https://wordpress-1196470-4364598.cloudwaysapps.com/wp-content/uploads/2025/09/SMILE-INTERNATIONAL-AESTHETIC-CLINIC-3-Edited-scaled-1.png" },
-  { name: "Client Logo 3", src: "https://wordpress-1196470-4364598.cloudwaysapps.com/wp-content/uploads/2025/05/WhatsApp_Image_2025-04-17_at_13.52.12_e0045bc0-removebg-preview-removebg-preview.png" },
-  { name: "Client Logo 4", src: "https://wordpress-1196470-4364598.cloudwaysapps.com/wp-content/uploads/2025/09/IMG-20221119-WA0074.png" },
+  { name: "Khyber Shawls", src: "https://wordpress-1196470-4364598.cloudwaysapps.com/wp-content/uploads/2025/05/WhatsApp_Image_2025-04-17_at_13.52.12_e0045bc0-removebg-preview-removebg-preview.png" },
+  { name: "One Stop Tyres Wakefield", src: "https://wordpress-1196470-4364598.cloudwaysapps.com/wp-content/uploads/2025/09/IMG-20221119-WA0074.png" },
   { name: "Buggy Desert", src: "https://wordpress-1196470-4364598.cloudwaysapps.com/wp-content/uploads/2025/02/buggy-desert-1.png" },
   { name: "Fly Zone Tourism", src: "https://wordpress-1196470-4364598.cloudwaysapps.com/wp-content/uploads/2025/03/fly-zone-tourism-logo-2.png" },
   { name: "Best Peshawari Chappal", src: "https://wordpress-1196470-4364598.cloudwaysapps.com/wp-content/uploads/2025/03/cropped-Best-Peshawari-chappal-1.png" },
