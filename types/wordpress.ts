@@ -14,6 +14,7 @@ export interface WPPost {
       media_details: { width: number; height: number };
     }>;
     author?: Array<{ name: string; avatar_urls: { "96": string } }>;
+    "wp:term"?: Array<Array<{ id: number; name: string; slug: string; taxonomy: string }>>;
   };
   yoast_head_json?: {
     title: string;
