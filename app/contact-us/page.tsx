@@ -81,7 +81,7 @@ export default function ContactPage() {
                   <p className="text-brand-gray text-xs uppercase tracking-widest font-heading mb-1">
                     Based In
                   </p>
-                  <p className="text-white">United Kingdom</p>
+                  <p className="text-white">Pakistan</p>
                 </div>
               </div>
             </div>
