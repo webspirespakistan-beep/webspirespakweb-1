@@ -44,7 +44,7 @@ export default function ContactPage() {
             <p className="relative z-10 text-brand-gray text-[11px] uppercase tracking-widest font-heading font-semibold mb-3">
               Email Us Directly
             </p>
-            <p className="relative z-10 text-white font-heading font-bold text-xl sm:text-2xl group-hover:text-brand-red transition-colors duration-300">
+            <p className="relative z-10 text-white font-heading font-bold text-lg lg:text-xl xl:text-2xl group-hover:text-brand-red transition-colors duration-300 break-all w-full px-2">
               hello@webspires.com.pk
             </p>
             <div className="relative z-10 mt-8 flex items-center gap-2 text-brand-gray group-hover:text-white text-sm font-medium transition-colors duration-300 opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0">
@@ -71,7 +71,7 @@ export default function ContactPage() {
             <p className="relative z-10 text-brand-gray text-[11px] uppercase tracking-widest font-heading font-semibold mb-3">
               Fastest Response
             </p>
-            <p className="relative z-10 text-white font-heading font-bold text-xl sm:text-2xl group-hover:text-brand-red transition-colors duration-300">
+            <p className="relative z-10 text-white font-heading font-bold text-lg lg:text-xl xl:text-2xl group-hover:text-brand-red transition-colors duration-300 break-words w-full px-2">
               +92 344 8959905
             </p>
             <div className="relative z-10 mt-8 flex items-center gap-2 text-brand-gray group-hover:text-white text-sm font-medium transition-colors duration-300 opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0">
@@ -94,7 +94,7 @@ export default function ContactPage() {
             <p className="relative z-10 text-brand-gray text-[11px] uppercase tracking-widest font-heading font-semibold mb-3">
               Headquarters
             </p>
-            <p className="relative z-10 text-white font-heading font-bold text-xl sm:text-2xl">
+            <p className="relative z-10 text-white font-heading font-bold text-lg lg:text-xl xl:text-2xl break-words w-full px-2">
               Pakistan
             </p>
             <div className="relative z-10 mt-8 flex items-center gap-2 text-brand-gray/50 text-sm font-medium">
