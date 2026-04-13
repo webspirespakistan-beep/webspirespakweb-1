@@ -19,8 +19,24 @@ const localBusinessSchema = {
   telephone: "+923448959905",
   address: {
     "@type": "PostalAddress",
+    addressLocality: "Peshawar",
+    addressRegion: "Khyber Pakhtunkhwa",
+    postalCode: "25000",
     addressCountry: "PK"
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 34.0151,
+    longitude: 71.5249
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "18:00"
+    }
+  ],
   url: "https://webspires.com.pk/contact-us"
 };
 
