@@ -48,6 +48,14 @@ export async function getAllProjects(): Promise<WPPost[]> {
   );
 }
 
+export async function getProjectBySlug(slug: string): Promise<WPPost | null> {
+  const posts = await fetchWP<WPPost[]>(
+    `/projects?slug=${slug}&_embed&status=publish`,
+    3600
+  );
+  return posts[0] || null;
+}
+
 // ─── Pages ───────────────────────────────────────────────────────────────────
 
 export async function getPageBySlug(slug: string): Promise<WPPage | null> {
