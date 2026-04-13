@@ -156,6 +156,6 @@ export default async function BlogPostPage({ params }: Props) {
           </Link>
         </div>
       </div>
-    </div>
+    </article>
   );
 }
