@@ -41,11 +41,17 @@ export const metadata: Metadata = {
     template: "%s | Webspires",
   },
   description:
-    "Webspires is a UK-based digital marketing agency specialising in GEO, high-performance websites, and data-driven marketing strategies.",
+    "Webspires is a Pakistan-based digital marketing agency specialising in GEO, high-performance websites, and data-driven marketing strategies.",
   metadataBase: new URL("https://www.webspires.com.pk"),
+  alternates: {
+    languages: {
+      "en-PK": "https://www.webspires.com.pk",
+      "x-default": "https://www.webspires.com.pk",
+    },
+  },
   openGraph: {
     type: "website",
-    locale: "en_GB",
+    locale: "en_PK",
     url: "https://www.webspires.com.pk",
     siteName: "Webspires",
     images: [{ url: "https://www.webspires.com.pk/og-image.jpg", width: 1200, height: 630 }],

@@ -15,35 +15,117 @@ export const metadata: Metadata = {
   },
 };
 
-const organizationSchema = {
+/* ──────────────────────────────────────────────────────────
+   LOCAL SEO: Merged Organization + LocalBusiness into one
+   ProfessionalService schema. Google recommends ONE primary
+   entity per page — having separate Organization + LocalBusiness
+   creates ambiguity. ProfessionalService inherits from both.
+   
+   NAP (Name, Address, Phone) is hardcoded and consistent
+   with the Contact page schema for NAP consistency signals.
+   ────────────────────────────────────────────────────────── */
+const businessSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "ProfessionalService",
+  "@id": "https://www.webspires.com.pk/#organization",
   name: "Webspires",
   url: "https://www.webspires.com.pk",
   logo: "https://www.webspires.com.pk/logo.png",
+  image: "https://www.webspires.com.pk/og-image.jpg",
+  description: "Webspires is a digital marketing agency specialising in GEO, high-performance web development, SEO, and data-driven marketing strategies for businesses in Pakistan and globally.",
+
+  /* NAP — hardcoded, consistent with Contact page */
+  telephone: "+92-344-8959905",
+  email: "hello@webspires.com.pk",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "University Road",
+    addressLocality: "Peshawar",
+    addressRegion: "Khyber Pakhtunkhwa",
+    postalCode: "25000",
+    addressCountry: "PK",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 34.0151,
+    longitude: 71.5249,
+  },
+
+  /* Local SEO: Pakistan-targeted fields */
+  areaServed: [
+    {
+      "@type": "City",
+      name: "Peshawar",
+      containedInPlace: { "@type": "AdministrativeArea", name: "Khyber Pakhtunkhwa" },
+    },
+    { "@type": "City", name: "Islamabad" },
+    { "@type": "City", name: "Lahore" },
+    { "@type": "City", name: "Karachi" },
+    { "@type": "City", name: "Rawalpindi" },
+    { "@type": "City", name: "Faisalabad" },
+    {
+      "@type": "Country",
+      name: "Pakistan",
+    },
+    {
+      "@type": "Country",
+      name: "United Kingdom",
+    },
+    {
+      "@type": "Country",
+      name: "United Arab Emirates",
+    },
+  ],
+  priceRange: "$$",
+  currenciesAccepted: "PKR, GBP, USD",
+  paymentAccepted: "Bank Transfer, Credit Card",
+
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "+92-344-8959905",
     contactType: "customer service",
     email: "hello@webspires.com.pk",
+    availableLanguage: ["English", "Urdu"],
   },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "09:00",
+    closes: "18:00",
+  },
+
   sameAs: [
     "https://www.linkedin.com/company/webspires",
     "https://www.instagram.com/webspires.pk",
-    "https://www.facebook.com/webspires"
+    "https://www.facebook.com/webspires",
   ],
+
+  /* Services offered — helps Google understand the business type */
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Digital Services",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Web Development" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Search Engine Optimization (SEO)" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Generative Engine Optimization (GEO)" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Digital Marketing" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Brand Identity Design" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Social Media Management" } },
+    ],
+  },
 };
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Webspires Website",
+  name: "Webspires",
   url: "https://www.webspires.com.pk",
+  publisher: { "@id": "https://www.webspires.com.pk/#organization" },
   potentialAction: {
     "@type": "SearchAction",
     target: "https://www.webspires.com.pk/blogs?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
+    "query-input": "required name=search_term_string",
+  },
 };
 
 export default function HomePage() {
@@ -51,7 +133,7 @@ export default function HomePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }}
       />
       <script
         type="application/ld+json"

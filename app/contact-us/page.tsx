@@ -12,13 +12,15 @@ export const metadata: Metadata = {
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "ProfessionalService",
+  "@id": "https://www.webspires.com.pk/#organization",
   name: "Webspires",
   image: "https://www.webspires.com.pk/logo.png",
   email: "hello@webspires.com.pk",
-  telephone: "+923448959905",
+  telephone: "+92-344-8959905",
   address: {
     "@type": "PostalAddress",
+    streetAddress: "University Road",
     addressLocality: "Peshawar",
     addressRegion: "Khyber Pakhtunkhwa",
     postalCode: "25000",
@@ -29,6 +31,15 @@ const localBusinessSchema = {
     latitude: 34.0151,
     longitude: 71.5249
   },
+  priceRange: "$$",
+  currenciesAccepted: "PKR, GBP, USD",
+  areaServed: [
+    { "@type": "City", name: "Peshawar" },
+    { "@type": "City", name: "Islamabad" },
+    { "@type": "City", name: "Lahore" },
+    { "@type": "City", name: "Karachi" },
+    { "@type": "Country", name: "Pakistan" },
+  ],
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
