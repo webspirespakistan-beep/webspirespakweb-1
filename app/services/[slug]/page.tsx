@@ -57,11 +57,27 @@ export default async function SingleServicePage({ params }: { params: Promise<{ 
     "url": `https://webspires.com.pk/services/${service.slug}`
   };
 
+  const schemaArray = [
+    serviceSchema,
+    ...(service.faqs ? [{
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": service.faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    }] : [])
+  ];
+
   return (
     <div className="min-h-screen bg-brand-dark pt-32 pb-24">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaArray) }}
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         
@@ -115,6 +131,28 @@ export default async function SingleServicePage({ params }: { params: Promise<{ 
           </ul>
         </div>
         
+        {/* FAQs Section */}
+        {service.faqs && service.faqs.length > 0 && (
+          <div className="mb-16">
+            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-white mb-8 text-center">Frequently Asked Questions</h2>
+            <div className="space-y-4">
+              {service.faqs.map((faq, index) => (
+                <details key={index} className="group bg-brand-dark-2 border border-white/5 rounded-2xl overflow-hidden cursor-pointer open:border-brand-red/30 transition-colors">
+                  <summary className="flex items-center justify-between p-6 list-none font-heading font-bold text-lg text-white">
+                    {faq.question}
+                    <span className="transition-transform group-open:rotate-180 text-brand-red">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                  </summary>
+                  <p className="px-6 pb-6 text-brand-gray leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Call to Action */}
         <div className="bg-gradient-to-br from-brand-red/20 to-brand-dark-2 border border-brand-red/10 rounded-2xl p-12 text-center overflow-hidden relative">
           <div className="absolute top-0 right-0 w-64 h-64 bg-brand-red/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2" />
