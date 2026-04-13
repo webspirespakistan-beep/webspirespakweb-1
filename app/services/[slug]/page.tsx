@@ -3,16 +3,20 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { servicesData } from "@/lib/data/services";
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const service = servicesData.find((s) => s.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const service = servicesData.find((s) => s.slug === resolvedParams.slug);
   
   if (!service) {
     return { title: "Service Not Found" };
   }
 
   return {
-    title: `${service.title} | Webspires`,
+    title: service.title,
     description: service.shortDescription,
+    alternates: {
+      canonical: `https://webspires.com.pk/services/${service.slug}`,
+    },
   };
 }
 
@@ -22,8 +26,9 @@ export function generateStaticParams() {
   }));
 }
 
-export default function SingleServicePage({ params }: { params: { slug: string } }) {
-  const service = servicesData.find((s) => s.slug === params.slug);
+export default async function SingleServicePage({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
+  const service = servicesData.find((s) => s.slug === resolvedParams.slug);
 
   if (!service) {
     notFound();

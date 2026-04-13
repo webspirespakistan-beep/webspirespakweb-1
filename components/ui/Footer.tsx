@@ -9,10 +9,10 @@ const footerLinks = {
     { label: "Contact Us", href: "/contact-us" },
   ],
   Services: [
-    { label: "Web Development", href: "/services" },
-    { label: "Digital Marketing", href: "/services" },
-    { label: "GEO Optimisation", href: "/services" },
-    { label: "SEO", href: "/services" },
+    { label: "Web Development", href: "/services/web-development" },
+    { label: "Digital Marketing", href: "/services/digital-marketing" },
+    { label: "GEO Optimisation", href: "/services/geo-optimisation" },
+    { label: "SEO", href: "/services/seo" },
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy-policy" },

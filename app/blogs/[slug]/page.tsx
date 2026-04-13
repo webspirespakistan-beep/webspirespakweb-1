@@ -26,14 +26,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const seo = post.yoast_head_json;
   const image = getFeaturedImage(post);
+  const author = getAuthorName(post);
+  const plainTitle = post.title.rendered.replace(/<[^>]+>/g, "");
 
   return {
-    title: seo?.title || post.title.rendered,
-    description: seo?.description,
+    title: seo?.title || plainTitle,
+    description: seo?.description || `Read our latest article on ${plainTitle}`,
+    alternates: {
+      canonical: `https://webspires.com.pk/blogs/${post.slug}`,
+    },
     openGraph: {
-      title: seo?.title || post.title.rendered,
-      description: seo?.description,
-      images: image ? [{ url: image }] : [],
+      title: seo?.title || plainTitle,
+      description: seo?.description || `Read our latest article on ${plainTitle}`,
+      type: "article",
+      publishedTime: post.date,
+      modifiedTime: post.modified,
+      authors: [author],
+      url: `https://webspires.com.pk/blogs/${post.slug}`,
+      images: image ? [{ url: image }] : [{ url: "https://webspires.com.pk/og-image.jpg", width: 1200, height: 630 }],
     },
   };
 }
@@ -47,15 +57,45 @@ export default async function BlogPostPage({ params }: Props) {
 
   const image = getFeaturedImage(post);
   const author = getAuthorName(post);
+  const plainTitle = post.title.rendered.replace(/<[^>]+>/g, "");
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: plainTitle,
+    datePublished: post.date,
+    dateModified: post.modified,
+    author: {
+      "@type": "Person",
+      name: author,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Webspires",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://webspires.com.pk/logo.png",
+      },
+    },
+    image: image ? [image] : ["https://webspires.com.pk/og-image.jpg"],
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://webspires.com.pk/blogs/${post.slug}`,
+    },
+  };
 
   return (
-    <div className="min-h-screen bg-brand-dark pt-24">
+    <article className="min-h-screen bg-brand-dark pt-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       {/* Hero image */}
       {image && (
         <div className="relative h-64 sm:h-96 w-full overflow-hidden">
           <Image
             src={image}
-            alt={post.title.rendered}
+            alt={plainTitle}
             fill
             className="object-cover"
             priority
@@ -90,11 +130,11 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Meta */}
         <div className="flex items-center gap-4 text-brand-gray text-sm mb-12 pb-8 border-b border-white/10">
           <div className="w-8 h-8 rounded-full bg-brand-red flex items-center justify-center text-white font-heading font-bold text-xs">
-            {author[0]}
+            {author[0] || 'W'}
           </div>
           <span>{author}</span>
           <span className="text-white/20">|</span>
-          <span>{formatDate(post.date)}</span>
+          <time dateTime={post.date}>{formatDate(post.date)}</time>
         </div>
 
         {/* Content */}
