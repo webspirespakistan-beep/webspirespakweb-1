@@ -123,6 +123,24 @@ export default function AboutPage() {
           </div>
         </div>
 
+        {/* Company Background & Team Expertise */}
+        <div className="mb-24">
+          <h2 className="font-heading font-extrabold text-4xl text-white mb-8">
+            Our Story & Expertise
+          </h2>
+          <div className="bg-brand-dark-2 border border-white/5 rounded-3xl p-8 sm:p-12 space-y-6">
+            <p className="text-brand-gray text-lg leading-relaxed">
+              Founded on the belief that too many agencies hide behind vanity metrics, Webspires was built to fundamentally shift the dynamic between digital partners and businesses. For years, our founding team observed the industry standard: long-term locked contracts, confusing analytics dashboards, and a profound lack of actual ROI accountability. We decided to build the exact opposite.
+            </p>
+            <p className="text-brand-gray text-lg leading-relaxed">
+              Our core team consists of battle-tested senior developers, data-driven performance marketers, and search engine specialists who treat every client&apos;s budget with the same respect as their own. We don&apos;t employ account managers who operate as middle-men; when you work with Webspires, you work directly with the experts actively building your campaigns and writing your code.
+            </p>
+            <p className="text-brand-gray text-lg leading-relaxed">
+              Furthermore, we recognized early that traditional search was rapidly evolving. As Generative AI models like ChatGPT and Perplexity began intercepting search traffic, we pivoted heavily toward Generative Engine Optimisation (GEO) and Answer Engine Optimisation (AEO). Our engineers and SEO strategists collaborate to build deep, semantic content architecture—structuring entity associations and schema markups so our clients aren&apos;t just ranking on Google, but are cited as the undisputed authoritative answers across all leading LLMs.
+            </p>
+          </div>
+        </div>
+
         {/* Values */}
         <div className="mb-24">
           <h2 className="font-heading font-extrabold text-4xl text-white mb-12">
